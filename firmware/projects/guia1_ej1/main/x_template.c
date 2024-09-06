@@ -19,7 +19,7 @@
  * |:----------:|:-----------------------------------------------|
  * | 12/09/2023 | Document creation		                         |
  *
- * @author maria victoria viganoni (maria.viganoni@ingeniera.uner.edu.ar)
+ * @author Albano Peñalva (albano.penalva@uner.edu.ar)
  *
  */
 
