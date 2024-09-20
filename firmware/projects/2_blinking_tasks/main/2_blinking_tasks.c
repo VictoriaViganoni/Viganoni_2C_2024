@@ -65,7 +65,7 @@ static void Led3Task(void *pvParameter){
 /*==================[external functions definition]==========================*/
 void app_main(void){
     LedsInit();
-    xTaskCreate(&Led1Task, "LED_1", 512, NULL, 5, &led1_task_handle);
+    xTaskCreate(&Led1Task, "LED_1", 512, NULL, 5, &led1_task_handle);//
     xTaskCreate(&Led2Task, "LED_2", 512, NULL, 5, &led2_task_handle);
     xTaskCreate(&Led3Task, "LED_3", 512, NULL, 5, &led3_task_handle);
 }
