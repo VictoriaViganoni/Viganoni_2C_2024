@@ -2,16 +2,21 @@
  *
  * @section genDesc General Description
  *
- * This section describes how the program works.
- *
- * <a href="https://drive.google.com/...">Operation Example</a>
+ *Este programa implementa la medición y visualización de distancia utilizando un sensor ultrasónico HC-SR04 y 
+ *una pantalla LCD conectada a una placa EDU-ESP. El sistema enciende diferentes combinaciones de LEDs según la 
+ *distancia medida: si es menor a 10 cm, apaga todos los LEDs; entre 10 y 20 cm, enciende el LED_1; entre 20 y 30 cm, 
+ *enciende los LEDs 1 y 2; y si es mayor a 30 cm, enciende los LEDs 1, 2 y 3. La distancia también se muestra en la 
+ *pantalla LCD. El programa permite iniciar o detener la medición con el botón TEC1 y mantener el último valor medido 
+ *en el display con TEC2, actualizando la medición cada segundo.
  *
  * @section hardConn Hardware Connection
  *
  * |    Peripheral  |   ESP32   	|
  * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
- *
+ * | 	ECHO	 	| 	GPIO_3		|
+ * | 	Trigger	 	| 	GPIO_2		|
+ * | 	+5V 	 	|    +5V 		|
+ * | 	 GND	 	| 	 GND		|
  *
  * @section changelog Changelog
  *
@@ -19,22 +24,23 @@
  * |:----------:|:-----------------------------------------------|
  * | 06/09/2024 | Document creation		                         |
  * 
- * @section Diseñar el firmware modelando con un diagrama de flujo de manera que cumpla con las siguientes funcionalidades:
+ * @section Consigna
+ * Diseñar el firmware modelando con un diagrama de flujo de manera que cumpla con las siguientes funcionalidades:
  *
- *Mostrar distancia medida utilizando los leds de la siguiente manera:
+ * Mostrar distancia medida utilizando los leds de la siguiente manera:
  *
- *Si la distancia es menor a 10 cm, apagar todos los LEDs.
- *Si la distancia está entre 10 y 20 cm, encender el LED_1.
- *Si la distancia está entre 20 y 30 cm, encender el LED_2 y LED_1.
- *Si la distancia es mayor a 30 cm, encender el LED_3, LED_2 y LED_1.
+ * Si la distancia es menor a 10 cm, apagar todos los LEDs.
+ * Si la distancia está entre 10 y 20 cm, encender el LED_1.
+ * Si la distancia está entre 20 y 30 cm, encender el LED_2 y LED_1.
+ * Si la distancia es mayor a 30 cm, encender el LED_3, LED_2 y LED_1.
  *
- *Mostrar el valor de distancia en cm utilizando el display LCD.
- *Usar TEC1 para activar y detener la medición.
- *Usar TEC2 para mantener el resultado (“HOLD”).
- *Refresco de medición: 1 s
+ * Mostrar el valor de distancia en cm utilizando el display LCD.
+ * Usar TEC1 para activar y detener la medición.
+ * Usar TEC2 para mantener el resultado (“HOLD”).
+ * Refresco de medición: 1 s
  *
- *Se deberá conectar a la EDU-ESP un sensor de ultrasonido HC-SR04 y una pantalla LCD y utilizando los drivers provistos por la cátedra 
- *implementar la aplicación correspondiente. Se debe subir al repositorio el código. Se debe incluir en la documentación, realizada con doxygen, el diagrama de flujo. 
+ * Se deberá conectar a la EDU-ESP un sensor de ultrasonido HC-SR04 y una pantalla LCD y utilizando los drivers provistos por la cátedra 
+ * implementar la aplicación correspondiente. Se debe subir al repositorio el código. Se debe incluir en la documentación, realizada con doxygen, el diagrama de flujo. 
  *
  * @author maria victoria viganoni (maria.viganoni@ingeniera.uner.edu.ar)
  */
@@ -86,8 +92,10 @@ bool on = true;
 
 /*==================[internal functions declaration]=========================*/
 /**
+ * @fn void sensarTask()
  * @brief Esta tarea realiza las mediciones de distancia usando el sensor ultrasónico.
  * Actualiza la variable "distancia" y realiza un retraso conforme al intervalo de medición especificado.
+ * @return
  */
 void sensarTask()
 { 
@@ -102,9 +110,11 @@ void sensarTask()
 }
 
 /**
+ * @fn void mostrarTask()
  * @brief Esta tarea muestra los datos medidos en la pantalla LCD y controla el encendido de los LEDs.
  * Dependiendo de la distancia medida, enciende o apaga los LEDs correspondientes. Además, si no está activado el modo "hold", 
  * actualiza el valor mostrado en el display.
+ * @return
  */
 void mostrarTask()
 {
@@ -149,8 +159,10 @@ void mostrarTask()
     }
 }
 /**
+ * @fn void teclasTask()
  * @brief Esta tarea gestiona el control de la aplicación utilizando las teclas.
  * Permite activar o desactivar la medición con TEC1 y mantener el valor de la medición con TEC2.
+ * @return
  */
 void teclasTask()
 {

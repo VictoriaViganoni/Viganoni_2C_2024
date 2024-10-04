@@ -2,16 +2,22 @@
  *
  * @section genDesc General Description
  *
- * This section describes how the program works.
- *
- * <a href="https://drive.google.com/...">Operation Example</a>
+ *Este código controla un sistema de medición de distancia con un sensor ultrasónico y muestra 
+ *los resultados en una pantalla LCD, además de encender LEDs según la distancia medida. Utiliza 
+ *un ESP32 con interrupciones para gestionar el control de teclas y temporizadores. La distancia se 
+ *mide mediante el sensor ultrasónico conectado a los pines GPIO 2 y 3, y los valores se actualizan 
+ *en intervalos definidos por REFRESH_MEDICION y REFRESH_DISPLAY. Las tareas encargadas de sensar y 
+ *mostrar los datos se manejan de forma asíncrona mediante notificaciones y variables globales como 
+ *distancia, hold, y on controlan el estado del sistema.
  *
  * @section hardConn Hardware Connection
  *
  * |    Peripheral  |   ESP32   	|
  * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
- *
+ * | 	ECHO	 	| 	GPIO_3		|
+ * | 	Trigger	 	| 	GPIO_2		|
+ * | 	+5V 	 	|    +5V 		|
+ * | 	 GND	 	| 	 GND		|
  *
  * @section changelog Changelog
  *
@@ -19,7 +25,8 @@
  * |:----------:|:-----------------------------------------------|
  * | 13/09/2024 | Document creation		                         |
  * 
- * @sectionCree un nuevo proyecto en el que modifique la actividad del punto 1 de manera de utilizar interrupciones 
+ * @section Consigna
+ * Cree un nuevo proyecto en el que modifique la actividad del punto 1 de manera de utilizar interrupciones 
  * para el control de las teclas y el control de tiempos (Timers). 
  *
  *
@@ -48,7 +55,7 @@
 /** @def REFRESH_DISPLAY
  * @brief Define el tiempo en milisegundos para el retardo en la actualización de la pantalla LCD.
  */
-#define REFRESH_DISPLAY 100000
+#define REFRESH_DISPLAY 1000000
 
 
 /*==================[internal data definition]===============================*/
@@ -93,11 +100,12 @@ bool on = true;
 
 /**
  * @fn FuncTimerSensar(void *param)
- * @param param parámetro que no se utiliza
+ * @param param 
  * @brief Envía una notificación a la tarea encargada de sensar.
  * Esta función se utiliza para notificar de manera asíncrona a la tarea de sensado, 
  * desencadenando su ejecución. Se emplea en un contexto de interrupción, utilizando 
  * la función vTaskNotifyGiveFromISR para evitar bloqueos en la ejecución del sistema.
+ * @return
  */
 void FuncTimerSensar(void *param)
 {
@@ -106,11 +114,12 @@ void FuncTimerSensar(void *param)
 
 /**
  * @fn void FuncTimerMostrar(void *param)
- * @param param parámetro que no se utiliza
+ * @param param 
  * @brief Envía una notificación a la tarea encargada de mostrar.
  * Esta función notifica de manera asíncrona a la tarea responsable de mostrar información, 
  * desencadenando su ejecución. Se ejecuta en un contexto de interrupción, usando la función 
  * vTaskNotifyGiveFromISR, asegurando así una operación eficiente sin bloqueos del sistema.
+ * @return
  */
 void FuncTimerMostrar(void *param)
 {
@@ -118,8 +127,10 @@ void FuncTimerMostrar(void *param)
 }
 
 /**
+ * @fn void sensarTask()
  * @brief Esta tarea realiza las mediciones de distancia usando el sensor ultrasónico.
  * Actualiza la variable "distancia" y realiza un retraso conforme al intervalo de medición especificado.
+ * @return
  */
 void sensarTask()
 {
@@ -134,9 +145,11 @@ void sensarTask()
 }
 
 /**
+ * @fn void mostrarTask()
  * @brief Esta tarea muestra los datos medidos en la pantalla LCD y controla el encendido de los LEDs.
  * Dependiendo de la distancia medida, enciende o apaga los LEDs correspondientes. Además, si no está activado el modo "hold", 
  * actualiza el valor mostrado en el display.
+ * @return
  */
 void mostrarTask()
 {
@@ -190,6 +203,7 @@ void mostrarTask()
  * Esta función invierte el valor de la variable booleana `on`. Si el valor de 
  * `on` es verdadero, lo cambia a falso, y viceversa. Se utiliza para controlar 
  * el encendido o activación de un proceso o sistema.
+ * @return
  */
 void TeclaOn()
 {
@@ -202,6 +216,7 @@ void TeclaOn()
  * Esta función cambia el estado de la variable booleana `hold` solo si la 
  * bandera `on` está activada (es verdadera). Se utiliza para mantener o pausar 
  * una acción mientras el sistema está encendido.
+ * @return
  */
 void TeclaHold()
 {
