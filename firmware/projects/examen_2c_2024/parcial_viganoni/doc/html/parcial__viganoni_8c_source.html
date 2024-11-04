@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>parcial_docu: Archivo de código fuente C:/repositorios/Viganoni_2C_2024/firmware/projects/examen_2c_2024/parcial_viganoni/main/parcial_viganoni.c</title>
+<link rel="icon" href="icon.ico" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">parcial_docu<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('parcial__viganoni_8c_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">parcial_viganoni.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="parcial__viganoni_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">/*==================[inclusions]=============================================*/</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#include &quot;<a class="code" href="gpio__mcu_8h.html">gpio_mcu.h</a>&quot;</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#include &quot;<a class="code" href="analog__io__mcu_8h.html">analog_io_mcu.h</a>&quot;</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#include &quot;<a class="code" href="timer__mcu_8h.html">timer_mcu.h</a>&quot;</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#include &quot;<a class="code" href="uart__mcu_8h.html">uart_mcu.h</a>&quot;</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#include &quot;bluetooth_mcu.h&quot;</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#include &quot;<a class="code" href="led_8h.html">led.h</a>&quot;</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">/*==================[macros and definitions]=================================*/</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#aa023481d2f7313e7029f4502afb8ea8d">   69</a></span><span class="preprocessor">#define LED_VERDE LED_1</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a4082928e60e6f75adfc0b5f2b5db5303">   75</a></span><span class="preprocessor">#define LED_AMARILLO LED_2</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a7885f8a39915e51a832bd4d49a003a97">   81</a></span><span class="preprocessor">#define LED_ROJO LED_3</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#afaac7a3e3c8768147bf6148fc6358a5b">   87</a></span><span class="preprocessor">#define DISTANCIA_ALERTA 5.0</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#ac06465182564bca56a0964f8df2ec92b">   93</a></span><span class="preprocessor">#define UMBRAL_CAIDA 4.0</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">/*==================[internal data definition]===============================*/</span></div>
+<div class="foldopen" id="foldopen00104" data-start="{" data-end="};">
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="structconfig__perifericos__t.html">  104</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="structconfig__perifericos__t.html#abd2bed8c62717be51a4edcb913476d58">  105</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structconfig__perifericos__t.html#abd2bed8c62717be51a4edcb913476d58">led_verde</a>;       </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="structconfig__perifericos__t.html#a737533ce3da136224c3c73e05482031c">  106</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structconfig__perifericos__t.html#a737533ce3da136224c3c73e05482031c">led_amarillo</a>;    </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="structconfig__perifericos__t.html#a81992706d0a519c430e3171b3fc4df8d">  107</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structconfig__perifericos__t.html#a81992706d0a519c430e3171b3fc4df8d">led_rojo</a>;       </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="structconfig__perifericos__t.html#a24ea36cb11ad7b29e21d190da8e9b622">  108</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structconfig__perifericos__t.html#a24ea36cb11ad7b29e21d190da8e9b622">buzzer_pin</a>;     </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>} <a class="code hl_struct" href="structconfig__perifericos__t.html">config_perifericos_t</a>;</div>
+</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a43cc9ee2b273268944662459d5e40903">  114</a></span><span class="keywordtype">bool</span> <a class="code hl_variable" href="parcial__viganoni_8c.html#a43cc9ee2b273268944662459d5e40903">alerta_peligro</a> = <span class="keyword">false</span>;  </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a460fc2d3bb80eea183869f2fe4e2789f">  120</a></span><span class="keywordtype">float</span> <a class="code hl_variable" href="parcial__viganoni_8c.html#a460fc2d3bb80eea183869f2fe4e2789f">aceleracion_x</a>, <a class="code hl_variable" href="parcial__viganoni_8c.html#a480dd4d942f10c5238a5aaf60801dccd">aceleracion_y</a>, <a class="code hl_variable" href="parcial__viganoni_8c.html#afa56bb164550f40356f39d4b3633271e">aceleracion_z</a>; </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">/*==================[internal functions declaration]=========================*/</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a8bc8453ffd2cad8b1af8769754c3ea10">  131</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="parcial__viganoni_8c.html#a8bc8453ffd2cad8b1af8769754c3ea10">inicializar_leds</a>(<a class="code hl_struct" href="structconfig__perifericos__t.html">config_perifericos_t</a>* config) {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    LedInit(config-&gt;<a class="code hl_variable" href="structconfig__perifericos__t.html#abd2bed8c62717be51a4edcb913476d58">led_verde</a>);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    LedInit(config-&gt;<a class="code hl_variable" href="structconfig__perifericos__t.html#a737533ce3da136224c3c73e05482031c">led_amarillo</a>);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    LedInit(config-&gt;<a class="code hl_variable" href="structconfig__perifericos__t.html#a81992706d0a519c430e3171b3fc4df8d">led_rojo</a>);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>}</div>
+</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="foldopen" id="foldopen00144" data-start="{" data-end="}">
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a13e0a15e82dbeb483e97097f1fa3df5b">  144</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="parcial__viganoni_8c.html#a13e0a15e82dbeb483e97097f1fa3df5b">inicializar_bluetooth</a>() {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    BluetoothInit(); </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>}</div>
+</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="foldopen" id="foldopen00155" data-start="{" data-end="}">
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a661baae9911fb16af42df9567bf6ea69">  155</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="parcial__viganoni_8c.html#a661baae9911fb16af42df9567bf6ea69">inicializar_buzzer</a>(<a class="code hl_struct" href="structconfig__perifericos__t.html">config_perifericos_t</a>* config) {</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    GPIOConfig(config-&gt;<a class="code hl_variable" href="structconfig__perifericos__t.html#a24ea36cb11ad7b29e21d190da8e9b622">buzzer_pin</a>, <a class="code hl_enumvalue" href="group___g_i_o_p.html#gga423620ef7d69894833f70cfc395caaa9aa248e73c1faee9c6f072fd91569cf516">GPIO_OUTPUT</a>);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>}</div>
+</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="foldopen" id="foldopen00166" data-start="{" data-end="}">
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a461b69dae7a00cb3c0db4e232a43709a">  166</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="parcial__viganoni_8c.html#a461b69dae7a00cb3c0db4e232a43709a">medir_distancia_ultrasonido</a>() {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordtype">float</span> distancia = UltrasonidoMeasureDistance();  <span class="comment">// Función del repositorio</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordflow">if</span> (distancia &gt; <a class="code hl_define" href="parcial__viganoni_8c.html#afaac7a3e3c8768147bf6148fc6358a5b">DISTANCIA_ALERTA</a>) {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_define" href="parcial__viganoni_8c.html#aa023481d2f7313e7029f4502afb8ea8d">LED_VERDE</a>);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_define" href="parcial__viganoni_8c.html#a4082928e60e6f75adfc0b5f2b5db5303">LED_AMARILLO</a>);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_define" href="parcial__viganoni_8c.html#a7885f8a39915e51a832bd4d49a003a97">LED_ROJO</a>);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <a class="code hl_variable" href="parcial__viganoni_8c.html#a43cc9ee2b273268944662459d5e40903">alerta_peligro</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (distancia &gt; 3.0) {</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_define" href="parcial__viganoni_8c.html#aa023481d2f7313e7029f4502afb8ea8d">LED_VERDE</a>);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_define" href="parcial__viganoni_8c.html#a4082928e60e6f75adfc0b5f2b5db5303">LED_AMARILLO</a>);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <a class="code hl_function" href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a>(<a class="code hl_define" href="parcial__viganoni_8c.html#a7885f8a39915e51a832bd4d49a003a97">LED_ROJO</a>);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <a class="code hl_variable" href="parcial__viganoni_8c.html#a43cc9ee2b273268944662459d5e40903">alerta_peligro</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_define" href="parcial__viganoni_8c.html#aa023481d2f7313e7029f4502afb8ea8d">LED_VERDE</a>);</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_define" href="parcial__viganoni_8c.html#a4082928e60e6f75adfc0b5f2b5db5303">LED_AMARILLO</a>);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <a class="code hl_function" href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a>(<a class="code hl_define" href="parcial__viganoni_8c.html#a7885f8a39915e51a832bd4d49a003a97">LED_ROJO</a>);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <a class="code hl_variable" href="parcial__viganoni_8c.html#a43cc9ee2b273268944662459d5e40903">alerta_peligro</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    }</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>}</div>
+</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="foldopen" id="foldopen00194" data-start="{" data-end="}">
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#af80840fa9a7a97130191e6bf17bc10de">  194</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="parcial__viganoni_8c.html#af80840fa9a7a97130191e6bf17bc10de">controlar_alarma</a>(<span class="keywordtype">void</span>* pvParameters) {</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordflow">while</span> (1) {</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="parcial__viganoni_8c.html#a43cc9ee2b273268944662459d5e40903">alerta_peligro</a>) {</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            GPIOWrite(BUZZER_PIN, HIGH);</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            <a class="code hl_function" href="parcial__viganoni_8c.html#a181ba2d0d9cae88443334bf00dd63e6a">enviar_notificacion_bluetooth</a>(<span class="stringliteral">&quot;Peligro, vehículo cerca&quot;</span>);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            <a class="code hl_variable" href="parcial__viganoni_8c.html#a43cc9ee2b273268944662459d5e40903">alerta_peligro</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            GPIOWrite(BUZZER_PIN, LOW);</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        }</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        vTaskDelay(pdMS_TO_TICKS(500));  </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    }</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>}</div>
+</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="foldopen" id="foldopen00214" data-start="{" data-end="}">
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a181ba2d0d9cae88443334bf00dd63e6a">  214</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="parcial__viganoni_8c.html#a181ba2d0d9cae88443334bf00dd63e6a">enviar_notificacion_bluetooth</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* mensaje) {</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    BluetoothSendData(mensaje);  o</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
+</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="foldopen" id="foldopen00225" data-start="{" data-end="}">
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a8a4c39355df3d2588fb5ef2c6e3b6b00">  225</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="parcial__viganoni_8c.html#a8a4c39355df3d2588fb5ef2c6e3b6b00">detectar_caida</a>(<span class="keywordtype">void</span>* pvParameters) {</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordflow">while</span> (1) {</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <a class="code hl_function" href="group___analog___i_o.html#gab5ae00a35744f407072230979e593fd9">AnalogInputReadSingle</a>(CH_X, &amp;<a class="code hl_variable" href="parcial__viganoni_8c.html#a460fc2d3bb80eea183869f2fe4e2789f">aceleracion_x</a>);</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <a class="code hl_function" href="group___analog___i_o.html#gab5ae00a35744f407072230979e593fd9">AnalogInputReadSingle</a>(CH_Y, &amp;<a class="code hl_variable" href="parcial__viganoni_8c.html#a480dd4d942f10c5238a5aaf60801dccd">aceleracion_y</a>);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <a class="code hl_function" href="group___analog___i_o.html#gab5ae00a35744f407072230979e593fd9">AnalogInputReadSingle</a>(CH_Z, &amp;<a class="code hl_variable" href="parcial__viganoni_8c.html#afa56bb164550f40356f39d4b3633271e">aceleracion_z</a>);</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        </div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="keywordtype">float</span> magnitud_aceleracion = sqrt(<a class="code hl_variable" href="parcial__viganoni_8c.html#a460fc2d3bb80eea183869f2fe4e2789f">aceleracion_x</a> * <a class="code hl_variable" href="parcial__viganoni_8c.html#a460fc2d3bb80eea183869f2fe4e2789f">aceleracion_x</a> + <a class="code hl_variable" href="parcial__viganoni_8c.html#a480dd4d942f10c5238a5aaf60801dccd">aceleracion_y</a> * <a class="code hl_variable" href="parcial__viganoni_8c.html#a480dd4d942f10c5238a5aaf60801dccd">aceleracion_y</a> + <a class="code hl_variable" href="parcial__viganoni_8c.html#afa56bb164550f40356f39d4b3633271e">aceleracion_z</a> * <a class="code hl_variable" href="parcial__viganoni_8c.html#afa56bb164550f40356f39d4b3633271e">aceleracion_z</a>);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <span class="keywordflow">if</span> (magnitud_aceleracion &gt; <a class="code hl_define" href="parcial__viganoni_8c.html#ac06465182564bca56a0964f8df2ec92b">UMBRAL_CAIDA</a>) {</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            <a class="code hl_function" href="parcial__viganoni_8c.html#a181ba2d0d9cae88443334bf00dd63e6a">enviar_notificacion_bluetooth</a>(<span class="stringliteral">&quot;Caída detectada&quot;</span>);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        }</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        vTaskDelay(pdMS_TO_TICKS(10));  <span class="comment">// a 100 Hz</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    }</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>}</div>
+</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="foldopen" id="foldopen00247" data-start="{" data-end="}">
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a5c87eee76a412695bf5a25ab0e99e0a5">  247</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="parcial__viganoni_8c.html#a5c87eee76a412695bf5a25ab0e99e0a5">configurar_tareas</a>() {</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    xTaskCreate(&amp;<a class="code hl_function" href="parcial__viganoni_8c.html#af80840fa9a7a97130191e6bf17bc10de">controlar_alarma</a>, <span class="stringliteral">&quot;ControlarAlarma&quot;</span>, 2048, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, 5, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    xTaskCreate(&amp;<a class="code hl_function" href="parcial__viganoni_8c.html#a8a4c39355df3d2588fb5ef2c6e3b6b00">detectar_caida</a>, <span class="stringliteral">&quot;DetectarCaida&quot;</span>, 2048, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, 6, <a class="code hl_define" href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>);</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>}</div>
+</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment">/*==================[external functions definition]==========================*/</span></div>
+<div class="foldopen" id="foldopen00253" data-start="{" data-end="}">
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno"><a class="line" href="parcial__viganoni_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">  253</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="parcial__viganoni_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <a class="code hl_struct" href="structconfig__perifericos__t.html">config_perifericos_t</a> config = {</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        .<a class="code hl_variable" href="structconfig__perifericos__t.html#abd2bed8c62717be51a4edcb913476d58">led_verde</a> = <a class="code hl_define" href="parcial__viganoni_8c.html#aa023481d2f7313e7029f4502afb8ea8d">LED_VERDE</a>,</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        .led_amarillo = <a class="code hl_define" href="parcial__viganoni_8c.html#a4082928e60e6f75adfc0b5f2b5db5303">LED_AMARILLO</a>,</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        .led_rojo = <a class="code hl_define" href="parcial__viganoni_8c.html#a7885f8a39915e51a832bd4d49a003a97">LED_ROJO</a>,</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        .buzzer_pin = BUZZER_PIN</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    };</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <a class="code hl_function" href="parcial__viganoni_8c.html#a8bc8453ffd2cad8b1af8769754c3ea10">inicializar_leds</a>(&amp;config);</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <a class="code hl_function" href="parcial__viganoni_8c.html#a13e0a15e82dbeb483e97097f1fa3df5b">inicializar_bluetooth</a>();</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <a class="code hl_function" href="parcial__viganoni_8c.html#a661baae9911fb16af42df9567bf6ea69">inicializar_buzzer</a>(&amp;config);</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <a class="code hl_function" href="parcial__viganoni_8c.html#a5c87eee76a412695bf5a25ab0e99e0a5">configurar_tareas</a>();</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="keywordflow">while</span> (1) {</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <a class="code hl_function" href="parcial__viganoni_8c.html#a461b69dae7a00cb3c0db4e232a43709a">medir_distancia_ultrasonido</a>();</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        vTaskDelay(pdMS_TO_TICKS(500));  <span class="comment">//  cada 0.5 segundos</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    }</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>}</div>
+</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="comment">/*==================[end of file]============================================*/</span></div>
+<div class="ttc" id="aanalog__io__mcu_8h_html"><div class="ttname"><a href="analog__io__mcu_8h.html">analog_io_mcu.h</a></div></div>
+<div class="ttc" id="agpio__mcu_8h_html"><div class="ttname"><a href="gpio__mcu_8h.html">gpio_mcu.h</a></div></div>
+<div class="ttc" id="agroup___analog___i_o_html_gab5ae00a35744f407072230979e593fd9"><div class="ttname"><a href="group___analog___i_o.html#gab5ae00a35744f407072230979e593fd9">AnalogInputReadSingle</a></div><div class="ttdeci">void AnalogInputReadSingle(adc_ch_t channel, uint16_t *value)</div><div class="ttdoc">Read single channel.</div><div class="ttdef"><b>Definition</b> <a href="analog__io__mcu_8c_source.html#l00130">analog_io_mcu.c:130</a></div></div>
+<div class="ttc" id="agroup___g_i_o_p_html_gga423620ef7d69894833f70cfc395caaa9aa248e73c1faee9c6f072fd91569cf516"><div class="ttname"><a href="group___g_i_o_p.html#gga423620ef7d69894833f70cfc395caaa9aa248e73c1faee9c6f072fd91569cf516">GPIO_OUTPUT</a></div><div class="ttdeci">@ GPIO_OUTPUT</div><div class="ttdef"><b>Definition</b> <a href="gpio__mcu_8h_source.html#l00045">gpio_mcu.h:44</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ga4fd07c9f7fab15d0d07389a38f4a39d8"><div class="ttname"><a href="group___l_e_d.html#ga4fd07c9f7fab15d0d07389a38f4a39d8">LedOff</a></div><div class="ttdeci">uint8_t LedOff(led_t led)</div><div class="ttdoc">Turn off a specific LED.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00065">led.c:65</a></div></div>
+<div class="ttc" id="agroup___l_e_d_html_ga883021aaef65f080a52b1852172ecbc3"><div class="ttname"><a href="group___l_e_d.html#ga883021aaef65f080a52b1852172ecbc3">LedOn</a></div><div class="ttdeci">uint8_t LedOn(led_t led)</div><div class="ttdoc">Turn on a specific LED.</div><div class="ttdef"><b>Definition</b> <a href="led_8c_source.html#l00046">led.c:46</a></div></div>
+<div class="ttc" id="aili9341_8c_html_a070d2ce7b6bb7e5c05602aa8c308d0c4"><div class="ttname"><a href="ili9341_8c.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a></div><div class="ttdeci">#define NULL</div><div class="ttdef"><b>Definition</b> <a href="ili9341_8c_source.html#l00019">ili9341.c:19</a></div></div>
+<div class="ttc" id="aled_8h_html"><div class="ttname"><a href="led_8h.html">led.h</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a13e0a15e82dbeb483e97097f1fa3df5b"><div class="ttname"><a href="parcial__viganoni_8c.html#a13e0a15e82dbeb483e97097f1fa3df5b">inicializar_bluetooth</a></div><div class="ttdeci">void inicializar_bluetooth()</div><div class="ttdoc">Inicializa el módulo de Bluetooth utilizando las configuraciones predeterminadas.</div><div class="ttdef"><b>Definition</b> <a href="#l00144">parcial_viganoni.c:144</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a181ba2d0d9cae88443334bf00dd63e6a"><div class="ttname"><a href="parcial__viganoni_8c.html#a181ba2d0d9cae88443334bf00dd63e6a">enviar_notificacion_bluetooth</a></div><div class="ttdeci">void enviar_notificacion_bluetooth(const char *mensaje)</div><div class="ttdef"><b>Definition</b> <a href="#l00214">parcial_viganoni.c:214</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a4082928e60e6f75adfc0b5f2b5db5303"><div class="ttname"><a href="parcial__viganoni_8c.html#a4082928e60e6f75adfc0b5f2b5db5303">LED_AMARILLO</a></div><div class="ttdeci">#define LED_AMARILLO</div><div class="ttdoc">Led amarillo para indicar advertencia.</div><div class="ttdef"><b>Definition</b> <a href="#l00075">parcial_viganoni.c:75</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a43cc9ee2b273268944662459d5e40903"><div class="ttname"><a href="parcial__viganoni_8c.html#a43cc9ee2b273268944662459d5e40903">alerta_peligro</a></div><div class="ttdeci">bool alerta_peligro</div><div class="ttdef"><b>Definition</b> <a href="#l00114">parcial_viganoni.c:114</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a460fc2d3bb80eea183869f2fe4e2789f"><div class="ttname"><a href="parcial__viganoni_8c.html#a460fc2d3bb80eea183869f2fe4e2789f">aceleracion_x</a></div><div class="ttdeci">float aceleracion_x</div><div class="ttdef"><b>Definition</b> <a href="#l00120">parcial_viganoni.c:120</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a461b69dae7a00cb3c0db4e232a43709a"><div class="ttname"><a href="parcial__viganoni_8c.html#a461b69dae7a00cb3c0db4e232a43709a">medir_distancia_ultrasonido</a></div><div class="ttdeci">void medir_distancia_ultrasonido()</div><div class="ttdoc">Mide la distancia usando el sensor de ultrasonido y actualiza el estado de alerta de proximidad.</div><div class="ttdef"><b>Definition</b> <a href="#l00166">parcial_viganoni.c:166</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a480dd4d942f10c5238a5aaf60801dccd"><div class="ttname"><a href="parcial__viganoni_8c.html#a480dd4d942f10c5238a5aaf60801dccd">aceleracion_y</a></div><div class="ttdeci">float aceleracion_y</div><div class="ttdef"><b>Definition</b> <a href="#l00120">parcial_viganoni.c:120</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a5c87eee76a412695bf5a25ab0e99e0a5"><div class="ttname"><a href="parcial__viganoni_8c.html#a5c87eee76a412695bf5a25ab0e99e0a5">configurar_tareas</a></div><div class="ttdeci">void configurar_tareas()</div><div class="ttdoc">Configura e inicia las tareas del sistema.</div><div class="ttdef"><b>Definition</b> <a href="#l00247">parcial_viganoni.c:247</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a630544a7f0a2cc40d8a7fefab7e2fe70"><div class="ttname"><a href="parcial__viganoni_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a></div><div class="ttdeci">void app_main(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00253">parcial_viganoni.c:253</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a661baae9911fb16af42df9567bf6ea69"><div class="ttname"><a href="parcial__viganoni_8c.html#a661baae9911fb16af42df9567bf6ea69">inicializar_buzzer</a></div><div class="ttdeci">void inicializar_buzzer(config_perifericos_t *config)</div><div class="ttdef"><b>Definition</b> <a href="#l00155">parcial_viganoni.c:155</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a7885f8a39915e51a832bd4d49a003a97"><div class="ttname"><a href="parcial__viganoni_8c.html#a7885f8a39915e51a832bd4d49a003a97">LED_ROJO</a></div><div class="ttdeci">#define LED_ROJO</div><div class="ttdoc">Led rojo para indicar peligro.</div><div class="ttdef"><b>Definition</b> <a href="#l00081">parcial_viganoni.c:81</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a8a4c39355df3d2588fb5ef2c6e3b6b00"><div class="ttname"><a href="parcial__viganoni_8c.html#a8a4c39355df3d2588fb5ef2c6e3b6b00">detectar_caida</a></div><div class="ttdeci">void detectar_caida(void *pvParameters)</div><div class="ttdef"><b>Definition</b> <a href="#l00225">parcial_viganoni.c:225</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_a8bc8453ffd2cad8b1af8769754c3ea10"><div class="ttname"><a href="parcial__viganoni_8c.html#a8bc8453ffd2cad8b1af8769754c3ea10">inicializar_leds</a></div><div class="ttdeci">void inicializar_leds(config_perifericos_t *config)</div><div class="ttdef"><b>Definition</b> <a href="#l00131">parcial_viganoni.c:131</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_aa023481d2f7313e7029f4502afb8ea8d"><div class="ttname"><a href="parcial__viganoni_8c.html#aa023481d2f7313e7029f4502afb8ea8d">LED_VERDE</a></div><div class="ttdeci">#define LED_VERDE</div><div class="ttdoc">Led verde para indicar seguridad.</div><div class="ttdef"><b>Definition</b> <a href="#l00069">parcial_viganoni.c:69</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_ac06465182564bca56a0964f8df2ec92b"><div class="ttname"><a href="parcial__viganoni_8c.html#ac06465182564bca56a0964f8df2ec92b">UMBRAL_CAIDA</a></div><div class="ttdeci">#define UMBRAL_CAIDA</div><div class="ttdoc">Umbral de aceleración para detectar caída (en G)</div><div class="ttdef"><b>Definition</b> <a href="#l00093">parcial_viganoni.c:93</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_af80840fa9a7a97130191e6bf17bc10de"><div class="ttname"><a href="parcial__viganoni_8c.html#af80840fa9a7a97130191e6bf17bc10de">controlar_alarma</a></div><div class="ttdeci">void controlar_alarma(void *pvParameters)</div><div class="ttdef"><b>Definition</b> <a href="#l00194">parcial_viganoni.c:194</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_afa56bb164550f40356f39d4b3633271e"><div class="ttname"><a href="parcial__viganoni_8c.html#afa56bb164550f40356f39d4b3633271e">aceleracion_z</a></div><div class="ttdeci">float aceleracion_z</div><div class="ttdef"><b>Definition</b> <a href="#l00120">parcial_viganoni.c:120</a></div></div>
+<div class="ttc" id="aparcial__viganoni_8c_html_afaac7a3e3c8768147bf6148fc6358a5b"><div class="ttname"><a href="parcial__viganoni_8c.html#afaac7a3e3c8768147bf6148fc6358a5b">DISTANCIA_ALERTA</a></div><div class="ttdeci">#define DISTANCIA_ALERTA</div><div class="ttdoc">Umbral de distancia en metros para alerta.</div><div class="ttdef"><b>Definition</b> <a href="#l00087">parcial_viganoni.c:87</a></div></div>
+<div class="ttc" id="astructconfig__perifericos__t_html"><div class="ttname"><a href="structconfig__perifericos__t.html">config_perifericos_t</a></div><div class="ttdoc">Configuración para periféricos del sistema.</div><div class="ttdef"><b>Definition</b> <a href="#l00104">parcial_viganoni.c:104</a></div></div>
+<div class="ttc" id="astructconfig__perifericos__t_html_a24ea36cb11ad7b29e21d190da8e9b622"><div class="ttname"><a href="structconfig__perifericos__t.html#a24ea36cb11ad7b29e21d190da8e9b622">config_perifericos_t::buzzer_pin</a></div><div class="ttdeci">int buzzer_pin</div><div class="ttdef"><b>Definition</b> <a href="#l00108">parcial_viganoni.c:108</a></div></div>
+<div class="ttc" id="astructconfig__perifericos__t_html_a737533ce3da136224c3c73e05482031c"><div class="ttname"><a href="structconfig__perifericos__t.html#a737533ce3da136224c3c73e05482031c">config_perifericos_t::led_amarillo</a></div><div class="ttdeci">int led_amarillo</div><div class="ttdef"><b>Definition</b> <a href="#l00106">parcial_viganoni.c:106</a></div></div>
+<div class="ttc" id="astructconfig__perifericos__t_html_a81992706d0a519c430e3171b3fc4df8d"><div class="ttname"><a href="structconfig__perifericos__t.html#a81992706d0a519c430e3171b3fc4df8d">config_perifericos_t::led_rojo</a></div><div class="ttdeci">int led_rojo</div><div class="ttdef"><b>Definition</b> <a href="#l00107">parcial_viganoni.c:107</a></div></div>
+<div class="ttc" id="astructconfig__perifericos__t_html_abd2bed8c62717be51a4edcb913476d58"><div class="ttname"><a href="structconfig__perifericos__t.html#abd2bed8c62717be51a4edcb913476d58">config_perifericos_t::led_verde</a></div><div class="ttdeci">int led_verde</div><div class="ttdef"><b>Definition</b> <a href="#l00105">parcial_viganoni.c:105</a></div></div>
+<div class="ttc" id="atimer__mcu_8h_html"><div class="ttname"><a href="timer__mcu_8h.html">timer_mcu.h</a></div></div>
+<div class="ttc" id="auart__mcu_8h_html"><div class="ttname"><a href="uart__mcu_8h.html">uart_mcu.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_429d80758da54da73083af4edd40d0b3.html">projects</a></li><li class="navelem"><a class="el" href="dir_38689ceaafe05400723650ef02d8eef9.html">examen_2c_2024</a></li><li class="navelem"><a class="el" href="dir_bdf5d425f40e230324438e3ec4a4d5a6.html">parcial_viganoni</a></li><li class="navelem"><a class="el" href="dir_e346e4c20c62317577d19c694b69c6a0.html">main</a></li><li class="navelem"><a class="el" href="parcial__viganoni_8c.html">parcial_viganoni.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

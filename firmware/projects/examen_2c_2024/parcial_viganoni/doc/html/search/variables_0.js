@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['aceleracion_5fx_0',['aceleracion_x',['../parcial__viganoni_8c.html#a460fc2d3bb80eea183869f2fe4e2789f',1,'parcial_viganoni.c']]],
+  ['aceleracion_5fy_1',['aceleracion_y',['../parcial__viganoni_8c.html#a480dd4d942f10c5238a5aaf60801dccd',1,'parcial_viganoni.c']]],
+  ['aceleracion_5fz_2',['aceleracion_z',['../parcial__viganoni_8c.html#afa56bb164550f40356f39d4b3633271e',1,'parcial_viganoni.c']]],
+  ['adc1_5fsingle_3',['adc1_single',['../analog__io__mcu_8c.html#a6db1b5bb87100014c45838465c4faaf4',1,'analog_io_mcu.c']]],
+  ['adc1_5fsingle_5fused_4',['adc1_single_used',['../analog__io__mcu_8c.html#af31fb823954b0df82d9ec5ab760370f3',1,'analog_io_mcu.c']]],
+  ['adc2_5fcont_5',['adc2_cont',['../analog__io__mcu_8c.html#abf723b68942364cd9f3854c95040974d',1,'analog_io_mcu.c']]],
+  ['adc_5fcalibration_5fsingle_5f0_6',['adc_calibration_single_0',['../analog__io__mcu_8c.html#ab44ff7b286be54d83ddcd422ae4c758b',1,'analog_io_mcu.c']]],
+  ['adc_5fcalibration_5fsingle_5f1_7',['adc_calibration_single_1',['../analog__io__mcu_8c.html#ab0f0f3f204be670e2c2f9199a84f7292',1,'analog_io_mcu.c']]],
+  ['adc_5fcalibration_5fsingle_5f2_8',['adc_calibration_single_2',['../analog__io__mcu_8c.html#af40d9fe3fe2f2374bf2a1ad40ecd81be',1,'analog_io_mcu.c']]],
+  ['adc_5fcalibration_5fsingle_5f3_9',['adc_calibration_single_3',['../analog__io__mcu_8c.html#a36598053ba88479bf1c9402485cbef95',1,'analog_io_mcu.c']]],
+  ['adc_5fconfig_5fsingle_10',['adc_config_single',['../analog__io__mcu_8c.html#a2253f0d5ed152dd9f9d316728dec787a',1,'analog_io_mcu.c']]],
+  ['alarm_5fconfig_5fa_11',['alarm_config_a',['../timer__mcu_8c.html#a8f80c9f90e73dfe1745dbe48d9b558b7',1,'timer_mcu.c']]],
+  ['alarm_5fconfig_5fb_12',['alarm_config_b',['../timer__mcu_8c.html#ac7bf7495349e2867c97e245f6ee01d1b',1,'timer_mcu.c']]],
+  ['alarm_5fconfig_5fc_13',['alarm_config_c',['../timer__mcu_8c.html#a87435505df054fd2dbfd2eb83d69c089',1,'timer_mcu.c']]],
+  ['alerta_5fpeligro_14',['alerta_peligro',['../parcial__viganoni_8c.html#a43cc9ee2b273268944662459d5e40903',1,'parcial_viganoni.c']]],
+  ['app_5fid_15',['app_id',['../structhidd__inst__t.html#abdf9761d9e8c90fd70ec6eacaad8be2c',1,'hidd_inst_t::app_id'],['../structgatts__profile__inst.html#ab7fe10f376247e7e1eacdc0f560e9ef1',1,'gatts_profile_inst::app_id']]],
+  ['att_5ftbl_16',['att_tbl',['../structhidd__inst__t.html#a4b02da3773a64fb803b4e3e238fb536b',1,'hidd_inst_t']]]
+];
