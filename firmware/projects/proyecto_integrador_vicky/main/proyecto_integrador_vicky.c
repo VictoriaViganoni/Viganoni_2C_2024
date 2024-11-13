@@ -1,44 +1,57 @@
-/*! @mainpage Template
+/*! @mainpage Sistema de Impresión en Braille "SenseDot"
  *
- * @section genDesc General Description
+ * @section genDesc Descripción General
+ * Este programa permite traducir texto en caracteres Braille y troquelarlos en papel utilizando un robot cartesiano.
+ * Los motores controlan el movimiento en los ejes X e Y, mientras que un servo acciona el punzón para crear los puntos.
  *
- * This section describes how the program works.
+ * @section hardConn Conexión de Hardware
  *
- * <a href="https://drive.google.com/...">Operation Example</a>
- *
- * @section hardConn Hardware Connection
- *
- * |    Peripheral  |   ESP32   	|
- * |:--------------:|:--------------|
- * | 	PIN_X	 	| 	GPIO_X		|
- *
- *
- * @section changelog Changelog
+ * |    Peripheral   |   ESP32   |
+ * |:---------------:|:----------|
+ * | Motor X STEP    | GPIO_16   |
+ * | Motor X DIR     | GPIO_17   |
+ * | Motor Y STEP    | GPIO_15   |
+ * | Motor Y DIR     | GPIO_22   |
+ * | Servo           | GPIO_23   |
+ * | UART TX         | GPIO_1    |
+ * | UART RX         | GPIO_3    |
+ * 
+ * * @section changelog Changelog
  *
  * |   Date	    | Description                                    |
  * |:----------:|:-----------------------------------------------|
- * | 12/09/2023 | Document creation		                         |
+ * | 1/11/2024 | Document creation		                         |
  *
- * @author maria victoria viganoni (maria.viganoni@ingeniera.uner.edu.ar)
- *
+ * @autor: María Victoria Viganoni (maria.viganoni@ingeniera.uner.edu.ar)
  */
 
 /*==================[inclusions]=============================================*/
 #include <stdio.h>
 #include <stdint.h>
-#include <string.h>
+#include <stdbool.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "driver/gpio.h"
+#include "gpio_mcu.h"
+#include "timer_mcu.h"
+#include "uart_mcu.h"
+#include "analog_io_mcu.h"
 #include "esp_system.h"
+#include "string.h"
+#include "servo_sg90.h"
+
 /*==================[macros and definitions]=================================*/
-// Definir pines de conexión de los motores y servo
-#define X_STEP_PIN GPIO_NUM_16
-#define X_DIR_PIN GPIO_NUM_17
-#define Y_STEP_PIN GPIO_NUM_15
-#define Y_DIR_PIN GPIO_NUM_13
-#define SERVO_PIN GPIO_NUM_23
-// Diccionario de Braille en matrices 3x2
+
+#define X_STEP_PIN 16
+#define X_DIR_PIN 17
+#define Y_STEP_PIN 15
+#define Y_DIR_PIN 22
+#define SERVO_PIN 03
+#define UART_PORT 0
+#define BUF_SIZE 1024
+#define ESPACIO_ENTRE_PUNTOS 15
+#define ESPACIO_ENTRE_CARACTERES 30
+
+
 const int diccionario_braille[26][6] = {
     {0, 1, 0, 0, 0, 0}, // A
     {0, 1, 0, 1, 0, 0}, // B
@@ -58,7 +71,7 @@ const int diccionario_braille[26][6] = {
     {1, 1, 0, 1, 0, 1}, // P
     {1, 1, 1, 1, 0, 1}, // Q
     {0, 1, 1, 1, 0, 1}, // R
-    {1, 0, 0, 1, 0, 1}, // S
+    {1, 0, 1, 1, 0, 1}, // S
     {1, 0, 1, 1, 0, 1}, // T
     {0, 1, 0, 0, 1, 1}, // U
     {0, 1, 0, 1, 1, 1}, // V
@@ -67,64 +80,117 @@ const int diccionario_braille[26][6] = {
     {1, 1, 1, 0, 1, 1}, // Y
     {0, 1, 1, 0, 1, 1}  // Z
 };
-/*==================[internal data definition]===============================*/
 
 /*==================[internal functions declaration]=========================*/
-// Función para controlar el movimiento de los motores
-void mover_motor(int steps, int dirPin, int stepPin) {
-    gpio_set_level(dirPin, steps > 0 ? 1 : 0);
+
+
+//void configurar_uart() {
+//    serial_config_t uart_config = {
+//        .port = UART_PORT,
+//        .baud_rate = 115200,
+//        .func_p = UART_NO_INT,
+//        .param_p = NULL
+//    };
+//    UartInit(&uart_config);
+//}
+
+//int leer_texto_uart(char* buffer, int max_len) {
+//    uint8_t len = UartReadBuffer(UART_PORT, (uint8_t*)buffer, max_len - 1);
+//    if (len > 0) {
+//        buffer[len] = '\0';
+//    }
+//    return len;
+//}
+
+void inicializar_servo() {
+    ServoInit(SERVO_0, SERVO_PIN);  
+}
+
+void mover_motor(int steps, gpio_t dirPin, gpio_t stepPin) {
+    GPIOState(dirPin, steps > 0 ? true : false);
+    printf("Moviendo motor en %s con %d pasos.\n", (dirPin == X_DIR_PIN ? "X" : "Y"), steps); 
     for (int i = 0; i < abs(steps); i++) {
-        gpio_set_level(stepPin, 1);
-        vTaskDelay(1 / portTICK_PERIOD_MS);
-        gpio_set_level(stepPin, 0);
-        vTaskDelay(1 / portTICK_PERIOD_MS);
+        GPIOOn(stepPin);
+        vTaskDelay(50 / portTICK_PERIOD_MS);
+        GPIOOff(stepPin);
+        vTaskDelay(50 / portTICK_PERIOD_MS);
     }
 }
 
-// Función para mover el servo y troquelar el papel
 void troquelar() {
-    gpio_set_level(SERVO_PIN, 1); // Baja el punzón
-    vTaskDelay(500 / portTICK_PERIOD_MS);
-    gpio_set_level(SERVO_PIN, 0); // Sube el punzón
-    vTaskDelay(500 / portTICK_PERIOD_MS);
+    printf("Troquelando...\n");
+    ServoMove(SERVO_0, -45);  
+    vTaskDelay(50/ portTICK_PERIOD_MS); 
+    ServoMove(SERVO_0, 45); 
+    vTaskDelay(50 / portTICK_PERIOD_MS); 
 }
 
-// Función para traducir una palabra y troquelarla en Braille
 void traducir_y_troquelar(const char* texto) {
-    int espacio_entre_caracteres = 5; // Define el espacio entre caracteres en pasos
-    
-    for (int i = strlen(texto) - 1; i >= 0; i--) {
+    printf("Traduciendo y troquelando la palabra: %s\n", texto); 
+    for (int i = 0; i < strlen(texto); i++) {
         char caracter = texto[i];
         if (caracter >= 'A' && caracter <= 'Z') {
             int letra_idx = caracter - 'A';
-            int* matriz = diccionario_braille[letra_idx];
-            for (int j = 0; j < 6; j++) {
-                if (matriz[j] == 1) {
-                    troquelar(); // Baja el punzón para troquelar el punto
+            const int* matriz = diccionario_braille[letra_idx];
+             printf("Troquelando letra: %c\n", caracter);
+
+
+            for (int col = 0; col < 2; col++) {
+                for (int row = 0; row < 3; row++) {
+                    int punto_idx = row + col * 3;
+                    if (matriz[punto_idx] == 1) {
+                        troquelar();  
+                    }
+                    if (row < 2) {
+                        mover_motor(ESPACIO_ENTRE_PUNTOS, Y_DIR_PIN, Y_STEP_PIN);
+                    }
                 }
-                mover_motor(espacio_entre_caracteres, X_DIR_PIN, X_STEP_PIN);
+                
+                mover_motor(-ESPACIO_ENTRE_PUNTOS * 2, Y_DIR_PIN, Y_STEP_PIN); 
+                if (col == 0) {
+                    mover_motor(ESPACIO_ENTRE_PUNTOS, X_DIR_PIN, X_STEP_PIN); 
+                }
             }
-            mover_motor(espacio_entre_caracteres, Y_DIR_PIN, Y_STEP_PIN); // Movemos a la siguiente letra
+            mover_motor(-ESPACIO_ENTRE_PUNTOS, X_DIR_PIN, X_STEP_PIN); 
+            mover_motor(ESPACIO_ENTRE_CARACTERES, X_DIR_PIN, X_STEP_PIN); 
         }
     }
 }
-/*==================[external functions definition]==========================*/
+
 void app_main(void) {
-    gpio_set_direction(X_STEP_PIN, GPIO_MODE_OUTPUT);
-    gpio_set_direction(X_DIR_PIN, GPIO_MODE_OUTPUT);
-    gpio_set_direction(Y_STEP_PIN, GPIO_MODE_OUTPUT);
-    gpio_set_direction(Y_DIR_PIN, GPIO_MODE_OUTPUT);
-    gpio_set_direction(SERVO_PIN, GPIO_MODE_OUTPUT); // Inicialización del pin HC-RES84
+    GPIOInit(X_STEP_PIN, GPIO_OUTPUT);
+    GPIOInit(X_DIR_PIN, GPIO_OUTPUT);
+    GPIOInit(Y_STEP_PIN, GPIO_OUTPUT);
+    GPIOInit(Y_DIR_PIN, GPIO_OUTPUT);
+    GPIOInit(SERVO_PIN, GPIO_OUTPUT);
+    inicializar_servo();
     
-    // Ejemplo de palabra a traducir
-    const char* palabra = "HOLA";
+//    configurar_uart();
+
+//    char palabra[BUF_SIZE];
+//   UartSendString(UART_PORT, "Ingrese la palabra a traducir en Braille:\n");
+
+  //    while (1) {
+  //        int len = leer_texto_uart(palabra, sizeof(palabra)); 
+  //        if (len > 0) {
+  //            UartSendString(UART_PORT, "Traduciendo y troquelando: ");
+  //            UartSendString(UART_PORT, palabra);
+  //            UartSendString(UART_PORT, "\n");
+  //            traducir_y_troquelar(palabra);
+  //        }
+  //    }
+  //     int len = leer_texto_uart(palabra, sizeof(palabra));
+  //
+//     if (len > 0) {
+//        UartSendString(UART_PORT, "Traduciendo y troquelando: ");
+//        UartSendString(UART_PORT, palabra);
+//        UartSendString(UART_PORT, "\n");
+//        traducir_y_troquelar(palabra);  // Traduce y troquela la palabra
+//     }
+
+    char palabra[] = "HOLA";  
+    printf("Iniciando troquelado de: %s\n", palabra);
     traducir_y_troquelar(palabra);
+    printf("Troquelado completo.\n");
 }
-/*==================[end of file]============================================*/
-
-
-
-
-
-
 
