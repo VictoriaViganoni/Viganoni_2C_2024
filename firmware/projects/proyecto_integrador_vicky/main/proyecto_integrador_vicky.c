@@ -40,18 +40,52 @@
 #include "servo_sg90.h"
 
 /*==================[macros and definitions]=================================*/
-
+/**
+ * @def X_STEP_PIN
+ * @brief Pin GPIO utilizado para controlar los pasos del motor en el eje X.
+ */
 #define X_STEP_PIN 16
+
+/**
+ * @def  X_DIR_PIN
+ * @brief Pin GPIO utilizado para controlar la dirección del motor en el eje X.
+ */
 #define X_DIR_PIN 17
+
+/**
+ * @def Y_STEP_PIN 
+ * @brief Pin GPIO utilizado para controlar los pasos del motor en el eje Y.
+ */
 #define Y_STEP_PIN 15
+
+/**
+ * @def Y_DIR_PIN 
+ * @brief Pin GPIO utilizado para controlar la dirección del motor en el eje Y.
+ */
 #define Y_DIR_PIN 22
+
+/**
+ * @def SERVO_PIN
+ * @brief Pin GPIO utilizado para controlar el servo que acciona el punzón de troquelado.
+ */
 #define SERVO_PIN 03
-#define UART_PORT 0
-#define BUF_SIZE 1024
+
+/**
+ * @def ESPACIO_ENTRE_PUNTOS
+ * @brief Número de pasos entre puntos en la matriz Braille para ajustar el espaciado vertical.
+ */
 #define ESPACIO_ENTRE_PUNTOS 15
+
+/**
+ * @def ESPACIO_ENTRE_CARACTERES
+ * @brief Número de pasos entre caracteres en la matriz Braille para ajustar el espaciado horizontal.
+ */
 #define ESPACIO_ENTRE_CARACTERES 30
 
-
+/** 
+ * @def diccionario_braille
+ * @brief 
+ */
 const int diccionario_braille[26][6] = {
     {0, 1, 0, 0, 0, 0}, // A
     {0, 1, 0, 1, 0, 0}, // B
@@ -83,29 +117,27 @@ const int diccionario_braille[26][6] = {
 
 /*==================[internal functions declaration]=========================*/
 
-
-//void configurar_uart() {
-//    serial_config_t uart_config = {
-//        .port = UART_PORT,
-//        .baud_rate = 115200,
-//        .func_p = UART_NO_INT,
-//        .param_p = NULL
-//    };
-//    UartInit(&uart_config);
-//}
-
-//int leer_texto_uart(char* buffer, int max_len) {
-//    uint8_t len = UartReadBuffer(UART_PORT, (uint8_t*)buffer, max_len - 1);
-//    if (len > 0) {
-//        buffer[len] = '\0';
-//    }
-//    return len;
-//}
-
+/** 
+ * @fn  inicializar_servo()
+ * @brief Inicializa el servo motor configurando su frecuencia de funcionamiento.
+ * @return
+ * @param 
+ */
 void inicializar_servo() {
     ServoInit(SERVO_0, SERVO_PIN);  
 }
 
+/** 
+ * @fn  mover_motor()
+ * @brief Controla el movimiento de un motor paso a paso en una dirección específica.
+ * Esta función mueve el motor paso a paso en la cantidad de pasos indicada y en la dirección
+ * establecida por el pin `dirPin`. Se controla el pin `stepPin` para generar los pulsos de
+ * paso.
+ * @return
+ * @param steps Cantidad de pasos que debe realizar el motor.
+ * @param dirPin Pin GPIO para definir la dirección del motor.
+ * @param stepPin Pin GPIO para generar los pulsos de paso del motor.
+ */
 void mover_motor(int steps, gpio_t dirPin, gpio_t stepPin) {
     GPIOState(dirPin, steps > 0 ? true : false);
     printf("Moviendo motor en %s con %d pasos.\n", (dirPin == X_DIR_PIN ? "X" : "Y"), steps); 
@@ -117,6 +149,15 @@ void mover_motor(int steps, gpio_t dirPin, gpio_t stepPin) {
     }
 }
 
+
+/** 
+ * @fn  void troquelar()
+ * @brief Activa el servo motor para simular el proceso de troquelado en Braille.
+ * La función mueve el servo motor hacia una posición para simular el punzonado
+ * y luego lo regresa a su posición original.
+ * @return
+ * @param 
+ */
 void troquelar() {
     printf("Troquelando...\n");
     ServoMove(SERVO_0, -45);  
@@ -125,6 +166,16 @@ void troquelar() {
     vTaskDelay(50 / portTICK_PERIOD_MS); 
 }
 
+/** 
+ * @fn traducir_y_troquelar()
+ * @brief Traduce una cadena de texto a Braille y realiza el troquelado correspondiente.
+ * Esta función toma una cadena de texto en formato de letras mayúsculas, la convierte a Braille,
+ * y utiliza los motores y el servo para troquelar los caracteres en papel. Recorre cada letra
+ * de la cadena, identificando los puntos de Braille activos en una matriz y ejecutando movimientos
+ * en consecuencia.
+ * @return
+ * @param texto Puntero a la cadena de texto a traducir y troquelar en Braille.
+ */
 void traducir_y_troquelar(const char* texto) {
     printf("Traduciendo y troquelando la palabra: %s\n", texto); 
     for (int i = 0; i < strlen(texto); i++) {
@@ -164,29 +215,6 @@ void app_main(void) {
     GPIOInit(Y_DIR_PIN, GPIO_OUTPUT);
     GPIOInit(SERVO_PIN, GPIO_OUTPUT);
     inicializar_servo();
-    
-//    configurar_uart();
-
-//    char palabra[BUF_SIZE];
-//   UartSendString(UART_PORT, "Ingrese la palabra a traducir en Braille:\n");
-
-  //    while (1) {
-  //        int len = leer_texto_uart(palabra, sizeof(palabra)); 
-  //        if (len > 0) {
-  //            UartSendString(UART_PORT, "Traduciendo y troquelando: ");
-  //            UartSendString(UART_PORT, palabra);
-  //            UartSendString(UART_PORT, "\n");
-  //            traducir_y_troquelar(palabra);
-  //        }
-  //    }
-  //     int len = leer_texto_uart(palabra, sizeof(palabra));
-  //
-//     if (len > 0) {
-//        UartSendString(UART_PORT, "Traduciendo y troquelando: ");
-//        UartSendString(UART_PORT, palabra);
-//        UartSendString(UART_PORT, "\n");
-//        traducir_y_troquelar(palabra);  // Traduce y troquela la palabra
-//     }
 
     char palabra[] = "HOLA";  
     printf("Iniciando troquelado de: %s\n", palabra);
